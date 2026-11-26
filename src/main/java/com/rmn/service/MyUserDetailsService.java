@@ -4,6 +4,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,7 +17,7 @@ public class MyUserDetailsService implements UserDetailsService {
         }
         return User.builder()
                 .username("admin")
-                .password("$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy")
+                .password(new BCryptPasswordEncoder().encode("123"))
                 .roles("ADMIN")
                 .build();
     }
